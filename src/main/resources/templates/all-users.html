@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of users</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td align="center"><b>Full Name</b></td>
+        <td align="center"><b>Email</b></td>
+        <td align="center"><b>Phone number</b></td>
+        <td align="center"><b>Address</b></td>
+        <td align="center"><b>Birth Date</b></td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td align="center" th:text="${user.getFullname()}">user</td>
+        <td align="center" th:text="${user.getEmail()}">email</td>
+        <td align="center" th:text="${user.getPhone()}">phone</td>
+        <td align="center" th:text="${user.getAddress()}">address</td>
+        <td align="center" th:text="${user.getDateOfBirth()}">getDateOfBirth</td>
+        <td> <a th:href="@{/{id}/edit(id=${user.getId()})}">изменить</a> </td>
+        <td> <a th:href="@{/{id}/delete(id=${user.getId()})}">удалить</a> </td>
+    </tr>
+</table>
+<br/>
+<form th:action="@{/new}">
+    <input type="submit" value="Add"/>
+</form>
+
+
+</body>
+</html>
